@@ -1,25 +1,85 @@
+ html {
+  scroll-behavior: smooth;
+ }
+ 
  /* Add a black background color to the top navigation */
  .topnav {
-    background-color: #333;
+    background-color: #333333a9;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 10px;
     overflow: hidden;
     position: fixed; /* Set the navbar to fixed position */
-    top: 0; /* Position the navbar at the top of the page */
+    top: 0px; /* Position the navbar at the top of the page */
     width: 100%; /* Full width */
+    display: block;
+    transition: top 0.3s;
   }
-  
+
+  .topnav.big {
+    background-color: transparent;
+    overflow: hidden;
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0px; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+    display: block;
+    transition: top 0.3s;
+  }
+
   /* Style the links inside the navigation bar */
   .topnav a {
     float: left;
     display: block;
     color: #f2f2f2;
     text-align: center;
-    padding: 14px 16px;
+    padding: 8px 16px 8px;
     text-decoration: none;
-    font-size: 32px;
+    font-size: 24px;
   }
+  
+  .topnav p {
+    padding-right: 40px;
+  }
+
+  .topnav.big a {
+    float: left;
+    display: block;
+    color: #000000;
+    text-align: center;
+    padding: 8px 16px 8px;
+    text-decoration: none;
+    font-size: 30px;
+  }
+
+  /* Style the links inside the navigation bar */
+  /*
+  .topnav.name a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 4px 16px;
+    text-decoration: none;
+    font-size: 20px;
+  }
+
+  .topnav.name.big a {
+    float: left;
+    display: block;
+    color: #000000;
+    text-align: center;
+    padding: 4px 16px;
+    text-decoration: none;
+    font-size: 30px;
+  }
+  */
   
   /* Change the color of links on hover */
   .topnav a:hover {
+    color: rgb(244, 115, 45);
+  }
+
+  .topnav h6:hover {
     background-color: #ddd;
     color: black;
   }
@@ -35,6 +95,28 @@
     display: none;
   } 
 
-.main {
-margin-top: 30px; /* Add a top margin to avoid content overlay */
+.intro {
+  background: url('images/landscape.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  /*margin-top: 30px; /*Add a top margin to avoid content overlay */
+}
+
+  .intro p {
+    font-size: 32px;
+  }
+
+.about {
+  background-color: #c47347;
+  width: 100%; /* Full width */
+}
+
+.projects {
+  width: 100%; /* Full width */
+}
+
+.contact {
+  background-color: #797171;
+  width: 100%; /* Full width */
 }

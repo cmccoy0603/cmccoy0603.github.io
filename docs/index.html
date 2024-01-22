@@ -1,56 +1,54 @@
+<!DOCTYPE html>
 <html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/base.css">
+</head>
 <body>
-<div class="topnav" id="myTopnav">
-    <a href="#home" class="active">Home</a>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-        <i class="fa fa-bars"></i>
-    </a>
+<div class="topnav big" id="myTopnav">
+    <a href="#myIntro">Camden McCoy</a>
+    <a href="#myAbout">About</a>
+    <a href="#myProjects">Projects</a>
+    <a href="#myContact">Contact</a>
 </div>
-<div class="main">
-    <h1>Hello</h1>
-    <p>AHHHHHH. Is i <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br></p>
+<div class="intro" id="myIntro">
+    <p>Hello, my name is Camden McCoy and I'm a computer science student pursuing my undergrad at
+        the University of North Texas. <br> I'm super cool, please trust me. <br> please please please please please
+        please please <br>please please please please please please <br>please please please please please <br>please please please
+        please please please please <br>please please please.
+    </p>
 </div>
+<div class="about" id="myAbout" style="padding:0px 15px 2500px;font-size:30px">
+    <p>
+        I like video games and stuff like that. Yeah man <br> Its just cool like that <br> and also I play starcraft?
+    </p>
+</div>
+<div class="projects" id="myProjects" style="padding:0px 15px 2500px;font-size:30px">
+    <p>
+        I've worked on like a minecraft server. Thats kind of cool
+        Wow! look at this sick timeline 
+    </p>
+</div>
+<div class="contact" id="myContact" style="padding:0px 15px 2500px;font-size:30px">
+    <p>
+        Heres my email: cvmccoy123@gmail.com<br>
+        Also heres my github: <p href="github.com/cmccoy0603"></p><br>
+        Uh, yeah thats about all I Got
+    </p>
+</div>
+<script>
+    // When the user scrolls down 20px from the top of the document, slide down the navbar
+    window.onscroll = function() {scrollFunction()};
+    function scrollFunction() {
+      if (document.body.scrollTop > document.getElementById('myIntro').clientHeight || document.documentElement.scrollTop > document.getElementById('myIntro').clientHeight) {
+        document.getElementById("myTopnav").style.top = "0";
+        document.querySelector(".topnav").classList.remove('big');
+      } else {
+        //document.getElementById("myTopnav").style.top = "-50px";
+        document.querySelector(".topnav").classList.add('big');
+      }
+    }
+</script>
+
 </body>
 </html>
