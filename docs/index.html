@@ -4,7 +4,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css/base.css">
 </head>
-<body>
+<body onload="loadFunction()">
+<script>
+    function loadFunction() {
+        let navWidth = getElementById("myTopnav").clientHeight;
+        document.getElementById("myIntro").style.marginTop = -1*navWidth;
+    }
+</script>
 <div class="topnav big" id="myTopnav">
     <a href="#myIntro">Camden McCoy</a>
     <a href="#myAbout">About</a>
@@ -12,13 +18,16 @@
     <a href="#myContact">Contact</a>
 </div>
 <div class="intro" id="myIntro">
-    <p>Hello, my name is Camden McCoy and I'm a computer science student pursuing my undergrad at
-        the University of North Texas. <br> I'm super cool, please trust me. <br> please please please please please
-        please please <br>please please please please please please <br>please please please please please <br>please please please
-        please please please please <br>please please please.
-    </p>
+    <div class="cell"><img src="css/images/slotj.png"></div>
+    <div class="cellTwo">
+        <h1>Camden McCoy</h1>
+        <p>Computer Science Undergrad @ University of North Texas</p>
+    </div>
 </div>
-<div class="about" id="myAbout" style="padding:0px 15px 2500px;font-size:30px">
+
+    
+</div>
+<div class="about" id="myAbout" style="padding:0px 0px 2500px;font-size:30px">
     <p>
         I like video games and stuff like that. Yeah man <br> Its just cool like that <br> and also I play starcraft?
     </p>
