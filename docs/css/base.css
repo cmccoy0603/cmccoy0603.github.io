@@ -1,8 +1,10 @@
  html {
   scroll-behavior: smooth;
+  height: 100%;
  }
 
  body {
+  height: 100%;
   margin: 0;
   padding: 0;
  }
@@ -106,12 +108,13 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  height: 500px;
+  height: 100%/*700px*/;
   padding-top: 0px;
   margin-top: 0px; /*Add a top margin to avoid content overlay*/
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
 }
 
   .intro p {
@@ -126,13 +129,19 @@
   }
 
 .cell {
-  flex: 0 0 100%;
-  height: 50%;
-  margin-top:20%;
-  margin-bottom: 5px;
-  align-content: center center;
-  /*background-color: #999;*/
+  width: 200px;
+  height: 200px;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.cell img {
+    width: 150px;
+    height: 150px;
+}
+
 
 .cellTwo {
   flex: 0 0 100%;                       /* don't grow, don't shrink, width */
@@ -143,6 +152,10 @@
 .about {
   background-color: #c47347;
   width: 100%; /* Full width */
+}
+
+.gallery {
+  
 }
 
 .projects {
