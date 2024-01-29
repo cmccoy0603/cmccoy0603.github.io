@@ -1,6 +1,7 @@
  html {
   scroll-behavior: smooth;
   height: 100%;
+  --scrollbarBG: white;
  }
 
  body {
@@ -177,6 +178,25 @@
   text-align: center;
 }
 
+.clickableImg {
+  padding: 10px;
+}
+
+.clickableImg:hover {
+  opacity: .7;
+}
+
+.download {
+  background-color: rgb(202, 195, 195);
+  cursor: pointer;
+  align-items: center;
+  width: fit-content;
+}
+
+.download:hover {
+  background-color: #9d99ad;
+}
+
 * {box-sizing: border-box;}
 /* Slideshow container */
 .gallery {
@@ -262,6 +282,7 @@
 
 .projects {
   width: 100%; /* Full width */
+  text-align: center;
 }
 
 .row {
