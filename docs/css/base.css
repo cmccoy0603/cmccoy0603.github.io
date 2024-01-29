@@ -104,7 +104,8 @@
   } 
 
 .intro {
-  background: url('images/wideLandscape.jpg');
+  /*background: url('images/wideLandscape.jpg');*/
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("images/wideLandscape.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -150,9 +151,28 @@
 }
 
 .about {
-  background-color: #c47347;
+  background-color: #6f6c6a;
   width: 100%; /* Full width */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: minmax(150px, auto);
 }
+
+.sideInfo {
+  grid-column-start: 2;
+  grid-column-end: 4;
+  text-align: center center;
+}
+
+.bottomInfo {
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  padding-top: 10px;
+  text-align: center;
+}
+
 * {box-sizing: border-box;}
 /* Slideshow container */
 .gallery {
@@ -160,6 +180,10 @@
   max-width: 500px;
   position: relative;
   margin: auto;
+}
+
+.gallery img {
+  vertical-align: middle;
 }
 
 /* Hide the images by default */
@@ -234,6 +258,108 @@
 
 .projects {
   width: 100%; /* Full width */
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 8px;
+  justify-content: center;
+}
+
+.column {
+  flex: 30%;
+  max-width: 30%;
+  padding: 0 8px;
+}
+
+.column img {
+  margin-top: 16px;
+  vertical-align: middle;
+  width: 100%;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* Add Animation */
+.modal-content {  
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(0)} 
+  to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+  from {transform:scale(0)} 
+  to {transform:scale(1)}
+}
+
+/* The Close Button */
+.closeMod {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.closeMod:hover,
+.closeMod:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
+}
+
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+  transition: 0.3;
+}
+
+.container:hover {
+  opacity: .7;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .contact {
