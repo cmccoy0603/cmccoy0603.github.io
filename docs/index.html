@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css/base.css">
 </head>
@@ -13,13 +14,13 @@
 </script>
 <div class="topnav big" id="myTopnav">
     <a href="#myIntro">Camden McCoy</a>
-    <a href="#myAbout">About</a>
-    <a href="#myProjects">Projects</a>
-    <a href="#myContact">Contact</a>
+    <a href="#myAbout" class="split">About</a>
+    <a href="#myProjects" class="split">Projects</a>
+    <a href="#myContact" class="split">Contact</a>
 </div>
 <div class="intro" id="myIntro">
     <div><br><br><br></div>
-    <div class="cell"><img class="headshot" src="css/images/Headshot.jpg"></div>
+    <div class="cell"><img class="headshot" src="css/images/headshot.png"></div>
     <br>
     <div>
         <br><br><br>
@@ -98,7 +99,10 @@
           <div class="centered">Sim-City</div>
         </div>
         
-        <img src="rocks.jpg" width="300px" height="300px">
+        <div class="container">
+        <img id="socksSurvival" src="css/images/socksSurvival.png" width="300px" height="300px">
+        <div class="centered">Socks Survival</div>
+        </div>
     </div>
     <div class="column">
         <img src="underwater.jpg" width="300px" height="300px">
@@ -115,9 +119,14 @@
 <div id="myModal" class="modal">
 
 <!-- Modal content -->
-<div class="modal-content">
+<div class="modal-content" id="simCityMod">
     <span class="closeMod">&times;</span>
-    <p>Some text in the Modal..</p>
+    <p>SimCity was pretty cool</p>
+</div>
+
+<div class="modal-content" id="socksMod">
+  <span class="closeMod">&times;</span>
+  <p>Socks Survival, more like...... AHHHH</p>
 </div>
 
 </div>
@@ -126,26 +135,49 @@
 // Get the modal
 var modal = document.getElementById("myModal");
 
-// Get the button that opens the modal
-var btn = document.getElementsByClassName("container")[0];
-
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("closeMod")[0];
 
-// When the user clicks the button, open the modal 
-btn.onclick = function() {
-modal.style.display = "block";
-}
+var currMod;
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-modal.style.display = "none";
-}
+// When the user clicks any container, open the mod
+$(function() {
+  $("div.container").on("click", function(e) {
+    let whichMod = e.target.id;
+    
+    modal.style.display = "block";
+
+    //Do a silly switch statement to go through all the options. Is there a better way? maybe. But this is pretty good too
+    switch(whichMod)
+    {
+      case "simCity":
+        currMod = document.getElementById("simCityMod");
+        break;
+      case "socksSurvival":
+        currMod = document.getElementById("socksMod");
+        break;
+    }
+    //Display whatever the currMod was changed to
+    console.log(currMod);
+    currMod.style.display = "block";
+  });
+});
+
+
+// When the user clicks on any close class
+$(function() {
+  $("span.closeMod").on("click", function(e) {
+    //Just close all the content
+    modal.style.display = "none";
+    currMod.style.display = "none";
+  });
+});
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
 if (event.target == modal) {
-    modal.style.display = "none";
+  modal.style.display = "none";
+  currMod.style.display = "none";
 }
 }
 </script>
@@ -162,9 +194,11 @@ if (event.target == modal) {
     // When the user scrolls down 20px from the top of the document, slide down the navbar
     window.onscroll = function() {scrollFunction()};
     function scrollFunction() {
-      if (document.body.scrollTop > document.getElementById('myIntro').clientHeight || document.documentElement.scrollTop > document.getElementById('myIntro').clientHeight) {
+      let topHeight = document.getElementById('myIntro').clientHeight / 3.5;
+      if (document.body.scrollTop > topHeight || document.documentElement.scrollTop > topHeight) {
         document.getElementById("myTopnav").style.top = "0";
         document.querySelector(".topnav").classList.remove('big');
+
       } else {
         //document.getElementById("myTopnav").style.top = "-50px";
         document.querySelector(".topnav").classList.add('big');
