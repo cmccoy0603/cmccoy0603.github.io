@@ -156,6 +156,8 @@ $(function() {
       case "socksSurvival":
         currMod = document.getElementById("socksMod");
         break;
+      default:
+        currMod = null;
     }
     //Display whatever the currMod was changed to
     console.log(currMod);
@@ -182,13 +184,46 @@ if (event.target == modal) {
 }
 </script>
 
+<div class="skills" id="mySkills">
+  <h1 style="margin-bottom: 1em; margin-top: 5px">My Skills</h1>
+  <p style="margin: 0em;">Here you can find some of my technical and soft skills</p>
+  <p >I'm always learning more making new projects, so this list is ever expanding</p>
+  <div class="row">
+    <div class="column">
+        <div class="skillContainer">
+          <p>I have 4 years of object oriented programming experience</p>
+        </div>
+        
+        <div class="skillContainer">
+        <p>I have some amount of java experience</p>
+        </div>
+    </div>
+    <div class="column">
+        <div class="skillContainer">
+          <p>C and C++</p>
+        </div>
+        <div class="skillContainer">
+          <p>Html and CSS</p>
+        </div>
+    </div>
+    <div class="column">
+      <div class="skillContainer">
+        <p>Throw in some technical writing</p>
+      </div>
+      <div class="skillContainer">
+        <p>And also some other skill I probably have... maybe</p>
+      </div>
+    </div>
+  </div>
+</div>
 
-<div class="contact" id="myContact" style="padding:0px 15px 2500px;font-size:30px">
+<div class="contact" id="myContact">
+    <h1 style="padding-top: 5px; margin-bottom: 1em; text-align: center;">Contact Info</h1>
     <p>
         Heres my email: cvmccoy123@gmail.com<br>
-        Also heres my github: <p href="github.com/cmccoy0603"></p><br>
-        Uh, yeah thats about all I Got
+        Yeah man
     </p>
+    <a href="https:www.github.com" target="_blank">Github</a>
 </div>
 <script>
     // When the user scrolls down 20px from the top of the document, slide down the navbar

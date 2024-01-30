@@ -403,7 +403,44 @@
   transform: translate(-50%, -50%);
 }
 
+.skills {
+  background-color: #CC6848; 
+  width: 100%; /* Full width */
+  text-align: center;
+}
+
+.skills p {
+  font-size: 20px;
+}
+
+.rowSkill {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 8px;
+  justify-content: center;
+}
+
+.columnSkill {
+  flex: 30%;
+  max-width: 33%;
+  padding: 0 8px;
+}
+
+.skillContainer {
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
 .contact {
   background-color: #797171;
   width: 100%; /* Full width */
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact p {
+  font-size: 30px;
+  text-align: center;
 }
