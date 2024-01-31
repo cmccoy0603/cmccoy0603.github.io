@@ -407,10 +407,15 @@
   background-color: #CC6848; 
   width: 100%; /* Full width */
   text-align: center;
+  padding-bottom: 30px;
 }
 
 .skills p {
   font-size: 20px;
+}
+
+.skillContainer p {
+  font-size: 14px;
 }
 
 .rowSkill {
@@ -432,15 +437,31 @@
   padding-bottom: 10px;
 }
 
+.skillContainer img{
+  height: 75px;
+  width: 75px;
+  border-radius: 50%;
+  padding: 5px 5px 5px 5px;
+  border: 2px solid white;
+  background: white;
+}
+
 .contact {
-  background-color: #797171;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("images/landscapeFritz.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
   width: 100%; /* Full width */
-  height: 100%;
   position: relative;
   overflow: hidden;
+}
+
+.contact h1 {
+  color: white;
 }
 
 .contact p {
   font-size: 30px;
   text-align: center;
+  color: white;
 }
