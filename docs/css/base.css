@@ -171,7 +171,7 @@
 }
 
 .about {
-  background-color: #6f6c6a;
+  background-color: #bbb9b7;
   width: 100%; /* Full width */
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -297,7 +297,9 @@
 
 .projects {
   width: 100%; /* Full width */
+  padding-bottom: 25px;
   text-align: center;
+
 }
 
 .row {
@@ -404,7 +406,7 @@
 }
 
 .skills {
-  background-color: #CC6848; 
+  background-color: #ad5039; 
   width: 100%; /* Full width */
   text-align: center;
   padding-bottom: 30px;
@@ -415,7 +417,7 @@
 }
 
 .skillContainer p {
-  font-size: 14px;
+  font-size: 18px;
 }
 
 .rowSkill {
@@ -435,6 +437,8 @@
   text-align: center;
   padding-top: 10px;
   padding-bottom: 10px;
+  min-height: 300px;
+  max-height: 300px;
 }
 
 .skillContainer img{
