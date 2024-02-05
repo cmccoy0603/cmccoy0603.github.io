@@ -9,6 +9,8 @@
   width: 99.5%;
   margin: 0;
   padding: 0;
+  background-color: black;
+  background-image: linear-gradient(to bottom right, red, yellow);
  }
  
  /* Add a black background color to the top navigation */
