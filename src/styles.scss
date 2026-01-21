@@ -1,2 +1,47 @@
-/* You can add global styles to this file, and also import other style files */
 @import "../node_modules/bootstrap/scss/bootstrap";
+
+/* Color Theme Variables */
+:root {
+  --color-primary: #2563eb;
+  --color-primary-light: #3b82f6;
+  --color-primary-dark: #1e40af;
+  
+  --color-secondary: #10b981;
+  --color-secondary-light: #34d399;
+  --color-secondary-dark: #059669;
+  
+  --color-tertiary: #06b6d4;
+  --color-tertiary-light: #22d3ee;
+  --color-tertiary-dark: #0891b2;
+  
+  --color-background-light: #f0fdf4;
+  --color-background-dark: #ecfdf5;
+  --color-text-primary: #1f2937;
+  --color-text-light: #6b7280;
+  --color-white: #ffffff;
+  
+  --gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+}
+
+/* Transparent Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* Firefox Scrollbar */
+* {
+  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+}

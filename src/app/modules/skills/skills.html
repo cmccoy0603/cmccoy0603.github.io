@@ -1,1 +1,12 @@
-<p>skills works!</p>
+<section class="min-vh-100 d-flex flex-column align-items-center justify-content-center w-100" style="background: #f9f9f9; padding: 60px 20px;">
+  <h2 class="display-5 mb-5 text-dark">Skills</h2>
+  
+  <div class="w-100" style="max-width: 900px;">
+    <div class="grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; width: 100%;">
+      @for (skill of skills(); track skill.id) {
+        <app-skill-component [skill]="skill"></app-skill-component>
+      }
+    </div>
+  </div>
+</section>
+
