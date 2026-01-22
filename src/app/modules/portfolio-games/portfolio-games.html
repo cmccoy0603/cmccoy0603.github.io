@@ -1,29 +1,17 @@
-<section class="d-flex flex-column align-items-center justify-content-center w-100" style="background: white; padding: 60px 20px; min-height: auto;">
-  <h2 class="display-5 mb-5 text-dark">Games I've Worked On</h2>
+<section id="portfolio-games" class="w-100 position-relative" style="padding: 0; margin: 0;">
+  @if (portfolioGames()[currentGameIndex()]) {
+    <app-portfolio-item 
+      [currentGame]="currentGame()"
+      (wheel)="onTransitionScroll($event)"
+      (doneScrolling)="onItemDoneScrolling($event)"
+    >
+    </app-portfolio-item>
+  }
   
-  <div class="d-flex align-items-center gap-4 justify-content-center" style="width: 100%; max-width: 1000px; flex-wrap: wrap;">
-    <button 
-      class="btn btn-primary p-3" 
-      (click)="previousGame()" 
-      aria-label="Previous game"
-      style="font-size: 1.5rem; border-radius: 8px; border: none;">
-      ←
-    </button>
-    
-    <div style="width: 500px; height: 400px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-      @if (portfolioGames()[currentGameIndex()]) {
-        <app-portfolio-item [currentGame]="currentGame()"></app-portfolio-item>
-      }
-    </div>
-
-    <button 
-      class="btn btn-primary p-3" 
-      (click)="nextGame()" 
-      aria-label="Next game"
-      style="font-size: 1.5rem; border-radius: 8px; border: none;">
-      →
-    </button>
-  </div>
+  <!-- Progress bar for game transition -->
+  @if (transitionProgress() > 0) {
+    <div class="transition-progress-bar" [style.width.%]="transitionProgress() * 100"></div>
+  }
 </section>
 
 

@@ -1,4 +1,16 @@
-<div class="w-100 text-center p-5" style="background: #f5f5f5; border-radius: 8px;">
-    <h3 class="h4 mb-3 text-dark">{{ currentGame().title }}</h3>
-    <p class="text-muted mb-0">{{ currentGame().description }}</p>
+<div class="portfolio-item w-100 position-relative" style="height: 100vh;">
+  <!-- Full background image -->
+  <div class="portfolio-item-background"></div>
+  
+  <!-- Title in top left -->
+  <div class="position-absolute top-0 start-0 p-5 z-3">
+    <h2 class="display-2 fw-bold m-0 text-white">{{ currentGame().title }}</h2>
+  </div>
+  
+  <!-- Overlay description panel with animation -->
+  <div class="portfolio-item-right" [style.--scroll-progress]="scrollProgress() | number:'0.0-3'">
+    <div class="d-flex align-items-center justify-content-center h-100 p-5">
+      <p class="fs-5 lh-lg m-0 text-dark">{{ currentGame().description }}</p>
+    </div>
+  </div>
 </div>

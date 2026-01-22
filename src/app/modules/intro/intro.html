@@ -1,7 +1,13 @@
-<section class="min-vh-100 d-flex align-items-center justify-content-center text-center text-white" style="background: var(--gradient-primary); padding: 60px 20px;">
+<section class="min-vh-100 d-flex align-items-start justify-content-center text-center text-white" style="background: var(--gradient-primary); padding: 60px 20px;">
   <div class="d-flex flex-column align-items-center gap-4">
     <h1 class="display-3 fw-bold m-0">Camden McCoy</h1>
     <img src="assets/profile.jpg" alt="Profile picture" style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover; border: 4px solid white; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);" />
     <p class="fs-5 m-0">Game Programming Portfolio</p>
+    <button 
+      class="btn btn-light btn-lg mt-4" 
+      (click)="scrollToSection('portfolio-games')"
+      aria-label="Explore games section">
+      Explore Games
+    </button>
   </div>
 </section>
