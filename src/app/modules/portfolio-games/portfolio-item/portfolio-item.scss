@@ -21,6 +21,11 @@
   height: 100%;
   background-color: white;
   z-index: 2;
+  pointer-events: none;
   transition: width 0.1s linear;
   clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.portfolio-item-right.details-interactive {
+  pointer-events: auto;
 }

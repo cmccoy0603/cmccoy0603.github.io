@@ -1,6 +1,8 @@
-import { Component, input, Signal, ChangeDetectionStrategy, signal, OnInit, HostListener, ElementRef, computed, output, effect } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, effect, ElementRef, input, OnInit, output, signal } from '@angular/core';
 import { PortfolioGameDTO } from '../../../models/portfolio-game.dto';
 import { DecimalPipe } from '@angular/common';
+
+export type PortfolioItemScrollState = 'min' | 'mid' | 'max';
 
 @Component({
   selector: 'app-portfolio-item',
@@ -8,41 +10,33 @@ import { DecimalPipe } from '@angular/common';
   templateUrl: './portfolio-item.html',
   styleUrl: './portfolio-item.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   host: { '(wheel)': 'onScroll($event)' }
 })
 export class PortfolioItem implements OnInit {
-  currentGame = input.required<PortfolioGameDTO>()
-  doneScrolling = output<number>();
+  currentGame = input.required<PortfolioGameDTO>();
+  initialProgress = input(0);
+  progressChanged = output<number>();
   
   protected readonly scrollProgress = signal(0);
-  protected readonly isFullyExpanded = computed(() => this.scrollProgress() === 1);
+  protected readonly isFullyExpanded = computed(() => this.scrollProgress() >= 1);
   private isScrollLocked = false;
   private scrollAmount = 0;
-  private lastGameId: number | null = null;
   private readonly maxScroll = 1000; // pixels needed to fully expand
 
   constructor(private elementRef: ElementRef) {
-    // Reset scroll when game changes
     effect(() => {
-      const gameId = this.currentGame().id;
-      if (this.lastGameId !== null && this.lastGameId !== gameId) {
-        this.resetScroll();
-      }
-      this.lastGameId = gameId;
+      this.applyProgress(this.initialProgress());
     });
   }
 
   ngOnInit() {
-    this.isScrollLocked = false;
-    this.scrollAmount = 0;
+    this.applyProgress(this.initialProgress());
   }
 
-  private resetScroll() {
-    this.isScrollLocked = false;
-    this.scrollAmount = 0;
-    this.scrollProgress.set(0);
-    this.doneScrolling.emit(-1); // Emit minima state
+  private applyProgress(progress: number) {
+    const clampedProgress = Math.max(0, Math.min(progress, 1));
+    this.scrollAmount = clampedProgress * this.maxScroll;
+    this.scrollProgress.set(clampedProgress);
   }
 
   onScroll(event: WheelEvent) {
@@ -59,43 +53,19 @@ export class PortfolioItem implements OnInit {
     // Lock scroll when in view
     if (!this.isScrollLocked) {
       this.isScrollLocked = true;
-      this.scrollAmount = 0;
     }
 
-    const isScrollingDown = event.deltaY > 0;
-    const isScrollingUp = event.deltaY < 0;
-    const isAtMinima = this.scrollAmount === 0;
-    const isAtMaxima = this.scrollAmount === this.maxScroll;
+    const nextScrollAmount = Math.max(0, Math.min(this.scrollAmount + event.deltaY, this.maxScroll));
+    const nextProgress = nextScrollAmount / this.maxScroll;
 
-    if(isAtMaxima) {
-      this.doneScrolling.emit(1)
-    } else if (isAtMinima) {
-      this.doneScrolling.emit(-1)
-    } else {
-      this.doneScrolling.emit(0)
-    }
-
-    // Allow scroll only if:
-    // - We're not at minima when scrolling up
-    // - We're not at maxima when scrolling down
-    const shouldAllowScroll = 
-      (isScrollingDown && !isAtMaxima) || 
-      (isScrollingUp && !isAtMinima);
-
-    if (!shouldAllowScroll) {
+    if (nextScrollAmount === this.scrollAmount) {
+      this.progressChanged.emit(nextProgress);
       return;
     }
 
     event.preventDefault();
-    
-    // Add scroll delta
-    this.scrollAmount += event.deltaY;
-    
-    // Clamp scroll amount between 0 and maxScroll
-    this.scrollAmount = Math.max(0, Math.min(this.scrollAmount, this.maxScroll));
-    
-    // Calculate progress as percentage (0 to 1)
-    const progress = this.scrollAmount / this.maxScroll;
-    this.scrollProgress.set(progress);
+    this.scrollAmount = nextScrollAmount;
+    this.scrollProgress.set(nextProgress);
+    this.progressChanged.emit(nextProgress);
   }
 }

@@ -8,7 +8,12 @@
   </div>
   
   <!-- Overlay description panel with animation -->
-  <div class="portfolio-item-right" [style.--scroll-progress]="scrollProgress() | number:'0.0-3'">
+  <div
+    class="portfolio-item-right"
+    [class.details-interactive]="isFullyExpanded()"
+    [style.--scroll-progress]="scrollProgress() | number:'0.0-3'"
+    [attr.aria-disabled]="!isFullyExpanded()"
+  >
     <div class="d-flex align-items-center justify-content-center h-100 p-5">
       <p class="fs-5 lh-lg m-0 text-dark">{{ currentGame().description }}</p>
     </div>

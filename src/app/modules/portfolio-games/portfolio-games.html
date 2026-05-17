@@ -2,8 +2,8 @@
   @if (portfolioGames()[currentGameIndex()]) {
     <app-portfolio-item 
       [currentGame]="currentGame()"
-      (wheel)="onTransitionScroll($event)"
-      (doneScrolling)="onItemDoneScrolling($event)"
+      [initialProgress]="currentGameProgress()"
+      (progressChanged)="onItemProgressChanged($event)"
     >
     </app-portfolio-item>
   }
