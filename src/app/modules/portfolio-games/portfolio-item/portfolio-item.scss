@@ -19,7 +19,7 @@
   // Calculate width based on scroll progress: 25% + (scrollProgress * 50%) = 25% to 75%
   width: calc(25% + (var(--scroll-progress, 0) * 50%));
   height: 100%;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.9);
   z-index: 2;
   pointer-events: none;
   transition: width 0.1s linear;
@@ -28,4 +28,9 @@
 
 .portfolio-item-right.details-interactive {
   pointer-events: auto;
+}
+
+.game-title {
+  color: var(--color-secondary-light);
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
 }

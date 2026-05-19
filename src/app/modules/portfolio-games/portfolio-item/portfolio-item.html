@@ -1,10 +1,10 @@
 <div class="portfolio-item w-100 position-relative" style="height: 100vh;">
   <!-- Full background image -->
-  <div class="portfolio-item-background"></div>
+  <div class="portfolio-item-background" [style.background]="background()"></div>
   
   <!-- Title in top left -->
-  <div class="position-absolute top-0 start-0 p-5 z-3">
-    <h2 class="display-2 fw-bold m-0 text-white">{{ currentGame().title }}</h2>
+  <div class="position-absolute top-1 start-0 p-5 z-3">
+    <h2 class="display-2 fw-bold m-0 game-title">{{ currentGame().title }}</h2>
   </div>
   
   <!-- Overlay description panel with animation -->
@@ -14,8 +14,19 @@
     [style.--scroll-progress]="scrollProgress() | number:'0.0-3'"
     [attr.aria-disabled]="!isFullyExpanded()"
   >
-    <div class="d-flex align-items-center justify-content-center h-100 p-5">
+    <div class="d-flex flex-column align-items-center justify-content-center h-100 p-5">
       <p class="fs-5 lh-lg m-0 text-dark">{{ currentGame().description }}</p>
+      @if (isFullyExpanded()) {
+        <button type="button" class="btn btn-primary m-4" (click)="isOpened = true">Explore</button>
+      }
     </div>
   </div>
 </div>
+@if(isOpened) {
+  <app-game-modal
+    [isOpen]="isOpened"
+    [title]="currentGame().title"
+    [description]="currentGame().description"
+    (closed)="isOpened = false"
+  ></app-game-modal>
+}

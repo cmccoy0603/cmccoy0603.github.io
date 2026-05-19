@@ -8,3 +8,36 @@
   pointer-events: none;
   transition: width 0.15s ease-out;
 }
+
+/* Up / Down arrows that exit the portfolio section */
+.pg-arrow {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.55);
+  color: #fff;
+  border: none;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  font-size: 1.6rem;
+  line-height: 1;
+  border-radius: 999px;
+  opacity: 0.15;
+  transition: opacity 0.12s ease, transform 0.12s ease;
+  z-index: 1100;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pg-arrow:hover {
+  opacity: 0.9;
+  transform: translateX(-50%) scale(1.03);
+}
+
+.pg-arrow-up { top: 10px; }
+.pg-arrow-down { bottom: 10px; }
+
+.pg-arrow:focus { outline: 2px solid rgba(255,255,255,0.2); outline-offset: 2px; }

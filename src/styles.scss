@@ -1,18 +1,19 @@
 @import "../node_modules/bootstrap/scss/bootstrap";
+@import "../node_modules/bootstrap-icons/font/bootstrap-icons.css";
 
 /* Color Theme Variables */
 :root {
-  --color-primary: #2563eb;
-  --color-primary-light: #3b82f6;
-  --color-primary-dark: #1e40af;
+  --color-primary: #462C7D;
+  --color-primary-light: #6B5697;
+  --color-primary-dark: #382364;
   
-  --color-secondary: #10b981;
-  --color-secondary-light: #34d399;
-  --color-secondary-dark: #059669;
+  --color-secondary: #831C91;
+  --color-secondary-light: #9C49A7;
+  --color-secondary-dark: #691674;
   
-  --color-tertiary: #06b6d4;
-  --color-tertiary-light: #22d3ee;
-  --color-tertiary-dark: #0891b2;
+  --color-tertiary: #D552A3;
+  --color-tertiary-light: #DD75B5;
+  --color-tertiary-dark: #AA4182;
   
   --color-background-light: #f0fdf4;
   --color-background-dark: #ecfdf5;
@@ -44,4 +45,70 @@
 /* Firefox Scrollbar */
 * {
   scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+}
+
+/* Global Styles */
+.btn {
+  border-radius: 0.75rem;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease,
+    border-color 0.2s ease, color 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0.75rem 1.5rem rgba(70, 44, 125, 0.2);
+  }
+}
+
+.btn-primary {
+  --bs-btn-color: var(--color-white);
+  --bs-btn-bg: var(--color-primary);
+  --bs-btn-border-color: var(--color-primary);
+  --bs-btn-hover-color: var(--color-white);
+  --bs-btn-hover-bg: var(--color-primary-dark);
+  --bs-btn-hover-border-color: var(--color-primary-dark);
+  --bs-btn-focus-shadow-rgb: 70, 44, 125;
+  --bs-btn-active-color: var(--color-white);
+  --bs-btn-active-bg: var(--color-secondary-dark);
+  --bs-btn-active-border-color: var(--color-secondary-dark);
+  --bs-btn-disabled-color: var(--color-white);
+  --bs-btn-disabled-bg: var(--color-primary-light);
+  --bs-btn-disabled-border-color: var(--color-primary-light);
+  box-shadow: 0 0.5rem 1.25rem rgba(70, 44, 125, 0.18);
+}
+
+.btn-secondary {
+  --bs-btn-color: var(--color-white);
+  --bs-btn-bg: var(--color-secondary);
+  --bs-btn-border-color: var(--color-secondary);
+  --bs-btn-hover-color: var(--color-white);
+  --bs-btn-hover-bg: var(--color-secondary-dark);
+  --bs-btn-hover-border-color: var(--color-secondary-dark);
+  --bs-btn-focus-shadow-rgb: 131, 28, 145;
+  --bs-btn-active-color: var(--color-white);
+  --bs-btn-active-bg: var(--color-tertiary-dark);
+  --bs-btn-active-border-color: var(--color-tertiary-dark);
+  --bs-btn-disabled-color: var(--color-white);
+  --bs-btn-disabled-bg: var(--color-secondary-light);
+  --bs-btn-disabled-border-color: var(--color-secondary-light);
+}
+
+.btn-light {
+  --bs-btn-color: var(--color-primary);
+  --bs-btn-bg: var(--color-white);
+  --bs-btn-border-color: rgba(70, 44, 125, 0.18);
+  --bs-btn-hover-color: var(--color-primary-dark);
+  --bs-btn-hover-bg: #f7f2ff;
+  --bs-btn-hover-border-color: rgba(70, 44, 125, 0.28);
+  --bs-btn-focus-shadow-rgb: 70, 44, 125;
+  --bs-btn-active-color: var(--color-primary-dark);
+  --bs-btn-active-bg: #efe7ff;
+  --bs-btn-active-border-color: rgba(70, 44, 125, 0.34);
+  --bs-btn-disabled-color: var(--color-text-light);
+  --bs-btn-disabled-bg: var(--color-white);
+  --bs-btn-disabled-border-color: rgba(70, 44, 125, 0.12);
+}
+
+.btn:focus-visible {
+  box-shadow: 0 0 0 0.25rem rgba(70, 44, 125, 0.25);
 }

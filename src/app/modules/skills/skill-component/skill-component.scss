@@ -1,0 +1,16 @@
+.card-body {
+    background: linear-gradient(180deg, var(--color-secondary) 0%, var(--color-tertiary) 100%);
+    color: white;
+    border-radius: 16px;
+    padding: 8px 16px;
+    height: 100%;
+    box-shadow: 0 0.75rem 1.5rem rgba(70, 44, 125, 0.18);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+    will-change: transform;
+}
+
+:host(:hover) .card-body {
+    transform: translateY(-6px);
+    box-shadow: 0 1.1rem 2rem rgba(70, 44, 125, 0.26);
+    filter: brightness(1.04);
+}

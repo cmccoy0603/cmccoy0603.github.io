@@ -1,0 +1,23 @@
+@if (isOpen()) {
+  <div class="game-modal-backdrop" (click)="close()">
+    <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable game-modal-dialog" role="dialog" aria-modal="true" [attr.aria-label]="title()" (click)="$event.stopPropagation()">
+      <div class="modal-content game-modal-content">
+        <div class="modal-header game-modal-header">
+          <div>
+            <p class="game-modal-eyebrow m-0">Selected game</p>
+            <h3 class="game-modal-title m-0">{{ title() }}</h3>
+          </div>
+          <button type="button" class="btn-close" aria-label="Close modal" (click)="close()"></button>
+        </div>
+
+        <div class="modal-body game-modal-body">
+          <p class="game-modal-description m-0">{{ description() }}</p>
+        </div>
+
+        <div class="modal-footer game-modal-footer">
+          <button type="button" class="btn btn-light" (click)="close()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+}

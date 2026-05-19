@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, computed, ElementRef, Signal, signa
 import { CommonModule } from '@angular/common';
 import { PortfolioItem } from './portfolio-item/portfolio-item';
 import { PortfolioGameDTO } from '../../models/portfolio-game.dto';
+import { portfolioGames } from '../../content/games-content';
 
 @Component({
   selector: 'app-portfolio-games',
@@ -20,23 +21,7 @@ export class PortfolioGamesComponent {
   protected readonly currentGameIndex = signal(0);
   protected readonly transitionProgress = signal(0);
   protected readonly gameProgressById = signal<Record<number, number>>({});
-  protected readonly portfolioGames = signal<PortfolioGameDTO[]>([
-    { 
-      id: 1, 
-      title: 'Game 1',
-      description: 'An exciting game with unique mechanics and engaging gameplay.'
-    },
-    { 
-      id: 2, 
-      title: 'Game 2',
-      description: 'A challenging puzzle game that tests your problem-solving skills.'
-    },
-    { 
-      id: 3, 
-      title: 'Game 3',
-      description: 'An action-packed adventure game with immersive storytelling.'
-    }
-  ]);
+  protected readonly portfolioGames = signal(portfolioGames);
   
   private readonly isItemFullyExpanded = signal(false);
   private readonly isItemAtMinima = signal(true);
@@ -226,6 +211,38 @@ export class PortfolioGamesComponent {
     this.transitionScrollAmount = 0;
     this.transitionDirection = null;
     this.transitionProgress.set(0);
+  }
+
+  // Scroll the page to the previous sibling section (exit upward)
+  scrollToPreviousSection() {
+    this.resetTransition();
+    this.scrollToSibling('up');
+  }
+
+  // Scroll the page to the next sibling section (exit downward)
+  scrollToNextSection() {
+    this.resetTransition();
+    this.scrollToSibling('down');
+  }
+
+  private scrollToSibling(direction: 'up' | 'down') {
+    const el = this.elementRef.nativeElement as HTMLElement;
+    const sibling = direction === 'up' ? el.previousElementSibling : el.nextElementSibling;
+    if (sibling && sibling instanceof HTMLElement) {
+      try {
+        sibling.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } catch {
+        sibling.scrollIntoView();
+      }
+      return;
+    }
+
+    // Fallback: scroll to very top or bottom
+    if (direction === 'up') {
+      try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch { window.scrollTo(0, 0); }
+    } else {
+      try { window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }); } catch { window.scrollTo(0, document.body.scrollHeight); }
+    }
   }
 
   previousGame() {

@@ -1,12 +1,13 @@
 import { ChangeDetectionStrategy, Component, computed, effect, ElementRef, input, OnInit, output, signal } from '@angular/core';
 import { PortfolioGameDTO } from '../../../models/portfolio-game.dto';
 import { DecimalPipe } from '@angular/common';
+import { GameModal } from "../../../shared/game-modal/game-modal";
 
 export type PortfolioItemScrollState = 'min' | 'mid' | 'max';
 
 @Component({
   selector: 'app-portfolio-item',
-  imports: [DecimalPipe],
+  imports: [DecimalPipe, GameModal],
   templateUrl: './portfolio-item.html',
   styleUrl: './portfolio-item.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -16,12 +17,18 @@ export class PortfolioItem implements OnInit {
   currentGame = input.required<PortfolioGameDTO>();
   initialProgress = input(0);
   progressChanged = output<number>();
+  protected readonly background = computed(() => {
+    const game = this.currentGame();
+    const img = game?.image ?? 'https://images.unsplash.com/photo-1538481143235-5d440e180304?w=800&q=80';
+    return `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('${img}') center/cover`;
+  });
   
   protected readonly scrollProgress = signal(0);
   protected readonly isFullyExpanded = computed(() => this.scrollProgress() >= 1);
   private isScrollLocked = false;
   private scrollAmount = 0;
   private readonly maxScroll = 1000; // pixels needed to fully expand
+  isOpened = false;
 
   constructor(private elementRef: ElementRef) {
     effect(() => {
