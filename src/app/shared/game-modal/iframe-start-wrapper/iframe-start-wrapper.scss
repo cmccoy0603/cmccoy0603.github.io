@@ -4,7 +4,9 @@
 
 .iframe-shell {
   position: relative;
-  min-height: min(72vh, 44rem);
+  //min-height: min(72vh, 44rem);
+  height: 720px;
+  width: 1280px;
   border-radius: 1.5rem;
   overflow: hidden;
   background:

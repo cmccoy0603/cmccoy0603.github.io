@@ -32,7 +32,7 @@ export const portfolioGames: PortfolioGameDTO[] = [
         description: 'Look into the microscope to rearrange bins in different microscopic structures to get the correct structure',
         image:'/assets/Games/3DChromoTwist/3DChromoTwist-Main.png',
         modalKey: '3dchromo-twist',
-        iframeUrl: 'https://supremecool.itch.io/demonpunter'
+        iframeUrl: '/assets/Games/3DChromoTwist/3DChromoTwist/index.html'
     },
     { 
         id: 3, 

@@ -1,6 +1,6 @@
 @if (isOpen()) {
   <div class="game-modal-backdrop" (click)="close()" (wheel)="onWheel($event)">
-    <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable game-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="game-modal-title" (click)="$event.stopPropagation()" (wheel)="onWheel($event)">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable game-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="game-modal-title" (click)="$event.stopPropagation()" (wheel)="onWheel($event)">
       <div class="modal-content game-modal-content">
         <div class="modal-header game-modal-header">
           <div>
@@ -19,31 +19,7 @@
               <app-process-of-elimination-modal-body [game]="game()"></app-process-of-elimination-modal-body>
             }
             @case ('3dchromo-twist') {
-              <div class="d-grid gap-4">
-                <div class="row g-4 align-items-start">
-                  <div class="col-12 col-lg-7">
-                    <p class="lead text-dark mb-3">{{ game().modalContent?.summary }}</p>
-                    <p class="text-dark mb-0">{{ game().description }}</p>
-                  </div>
-
-                  <div class="col-12 col-lg-5">
-                    <div class="rounded-4 overflow-hidden shadow-sm border border-1 border-secondary-subtle bg-white">
-                      <img
-                        class="img-fluid w-100"
-                        [src]="game().image"
-                        [alt]="game().title"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                <app-iframe-start-wrapper
-                  [src]="game().iframeUrl || ''"
-                  [title]="game().title"
-                  buttonLabel="Start 3DChromo Twist"
-                  description="Click to load the Godot build only when you are ready to play."
-                ></app-iframe-start-wrapper>
-              </div>
+              <app-threed-chromo-twist-modal-body [game]="game()"></app-threed-chromo-twist-modal-body>
             }
             @default {
               <app-generic-game-modal-body [game]="game()"></app-generic-game-modal-body>
