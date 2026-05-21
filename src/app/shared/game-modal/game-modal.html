@@ -1,17 +1,54 @@
 @if (isOpen()) {
-  <div class="game-modal-backdrop" (click)="close()">
-    <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable game-modal-dialog" role="dialog" aria-modal="true" [attr.aria-label]="title()" (click)="$event.stopPropagation()">
+  <div class="game-modal-backdrop" (click)="close()" (wheel)="onWheel($event)">
+    <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable game-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="game-modal-title" (click)="$event.stopPropagation()" (wheel)="onWheel($event)">
       <div class="modal-content game-modal-content">
         <div class="modal-header game-modal-header">
           <div>
             <p class="game-modal-eyebrow m-0">Selected game</p>
-            <h3 class="game-modal-title m-0">{{ title() }}</h3>
+            <h3 class="game-modal-title m-0" id="game-modal-title">{{ game().title }}</h3>
           </div>
           <button type="button" class="btn-close" aria-label="Close modal" (click)="close()"></button>
         </div>
 
-        <div class="modal-body game-modal-body">
-          <p class="game-modal-description m-0">{{ description() }}</p>
+        <div class="modal-body game-modal-body" (wheel)="onWheel($event)">
+          @switch (game().modalKey ?? 'generic') {
+            @case ('twilight-train') {
+              <app-twilight-train-modal-body [game]="game()"></app-twilight-train-modal-body>
+            }
+            @case ('process-of-elimination') {
+              <app-process-of-elimination-modal-body [game]="game()"></app-process-of-elimination-modal-body>
+            }
+            @case ('3dchromo-twist') {
+              <div class="d-grid gap-4">
+                <div class="row g-4 align-items-start">
+                  <div class="col-12 col-lg-7">
+                    <p class="lead text-dark mb-3">{{ game().modalContent?.summary }}</p>
+                    <p class="text-dark mb-0">{{ game().description }}</p>
+                  </div>
+
+                  <div class="col-12 col-lg-5">
+                    <div class="rounded-4 overflow-hidden shadow-sm border border-1 border-secondary-subtle bg-white">
+                      <img
+                        class="img-fluid w-100"
+                        [src]="game().image"
+                        [alt]="game().title"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <app-iframe-start-wrapper
+                  [src]="game().iframeUrl || ''"
+                  [title]="game().title"
+                  buttonLabel="Start 3DChromo Twist"
+                  description="Click to load the Godot build only when you are ready to play."
+                ></app-iframe-start-wrapper>
+              </div>
+            }
+            @default {
+              <app-generic-game-modal-body [game]="game()"></app-generic-game-modal-body>
+            }
+          }
         </div>
 
         <div class="modal-footer game-modal-footer">

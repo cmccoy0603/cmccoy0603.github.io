@@ -1,13 +1,14 @@
 import { ChangeDetectionStrategy, Component, computed, effect, ElementRef, input, OnInit, output, signal } from '@angular/core';
 import { PortfolioGameDTO } from '../../../models/portfolio-game.dto';
-import { DecimalPipe } from '@angular/common';
 import { GameModal } from "../../../shared/game-modal/game-modal";
 
 export type PortfolioItemScrollState = 'min' | 'mid' | 'max';
 
+const EXPAND_TICKS = 4;
+
 @Component({
   selector: 'app-portfolio-item',
-  imports: [DecimalPipe, GameModal],
+  imports: [GameModal],
   templateUrl: './portfolio-item.html',
   styleUrl: './portfolio-item.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -24,10 +25,13 @@ export class PortfolioItem implements OnInit {
   });
   
   protected readonly scrollProgress = signal(0);
-  protected readonly isFullyExpanded = computed(() => this.scrollProgress() >= 1);
+  // Track a binary expanded state so visual `.expanded` only toggles after tick thresholds
+  private expandedState = signal(false);
+  protected readonly isFullyExpanded = computed(() => this.expandedState());
   private isScrollLocked = false;
-  private scrollAmount = 0;
-  private readonly maxScroll = 1000; // pixels needed to fully expand
+  // Tick counters for discrete expand/collapse
+  private expandTickCounter = 0;
+  private collapseTickCounter = 0;
   isOpened = false;
 
   constructor(private elementRef: ElementRef) {
@@ -42,8 +46,16 @@ export class PortfolioItem implements OnInit {
 
   private applyProgress(progress: number) {
     const clampedProgress = Math.max(0, Math.min(progress, 1));
-    this.scrollAmount = clampedProgress * this.maxScroll;
     this.scrollProgress.set(clampedProgress);
+    if (clampedProgress >= 1) {
+      this.expandedState.set(true);
+      this.expandTickCounter = 0;
+      this.collapseTickCounter = 0;
+    } else if (clampedProgress <= 0) {
+      this.expandedState.set(false);
+      this.expandTickCounter = 0;
+      this.collapseTickCounter = 0;
+    }
   }
 
   onScroll(event: WheelEvent) {
@@ -62,17 +74,58 @@ export class PortfolioItem implements OnInit {
       this.isScrollLocked = true;
     }
 
-    const nextScrollAmount = Math.max(0, Math.min(this.scrollAmount + event.deltaY, this.maxScroll));
-    const nextProgress = nextScrollAmount / this.maxScroll;
+    const isDown = event.deltaY > 0;
+    const isUp = event.deltaY < 0;
 
-    if (nextScrollAmount === this.scrollAmount) {
-      this.progressChanged.emit(nextProgress);
+    // EXPAND: when not expanded, consume downward ticks locally until threshold reached
+    if (isDown && !this.expandedState()) {
+      this.expandTickCounter = Math.min(this.expandTickCounter + 1, EXPAND_TICKS);
+      const progress = this.expandTickCounter / EXPAND_TICKS;
+      // Visual feedback while ticking
+      this.scrollProgress.set(progress);
+      this.progressChanged.emit(progress);
+      event.preventDefault();
+
+      if (this.expandTickCounter >= EXPAND_TICKS) {
+        this.expandedState.set(true);
+        this.scrollProgress.set(1);
+        this.progressChanged.emit(1);
+        this.expandTickCounter = 0;
+        this.collapseTickCounter = 0;
+      }
+
       return;
     }
 
-    event.preventDefault();
-    this.scrollAmount = nextScrollAmount;
-    this.scrollProgress.set(nextProgress);
-    this.progressChanged.emit(nextProgress);
+    // COLLAPSE: when expanded, consume upward ticks locally until threshold reached.
+    // Important: keep `.expanded` visually until threshold is met so collapse doesn't happen immediately.
+    if (isUp && this.expandedState()) {
+      this.collapseTickCounter = Math.min(this.collapseTickCounter + 1, EXPAND_TICKS);
+      const progress = Math.max(0, 1 - this.collapseTickCounter / EXPAND_TICKS);
+      // Emit fractional progress for feedback but do not flip the expandedState until threshold
+      this.scrollProgress.set(progress);
+      this.progressChanged.emit(progress);
+      event.preventDefault();
+
+      if (this.collapseTickCounter >= EXPAND_TICKS) {
+        this.expandedState.set(false);
+        this.scrollProgress.set(0);
+        this.progressChanged.emit(0);
+        this.collapseTickCounter = 0;
+        this.expandTickCounter = 0;
+      }
+
+      return;
+    }
+
+    // If we're expanded and scrolling down, don't consume the event — let parent handle advancing.
+    if (isDown && this.expandedState()) {
+      return;
+    }
+
+    // If we're collapsed and scrolling up, allow parent to handle navigating to previous game.
+    if (isUp && !this.expandedState()) {
+      return;
+    }
   }
 }

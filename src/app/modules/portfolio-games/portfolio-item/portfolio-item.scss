@@ -16,13 +16,13 @@
   position: absolute;
   top: 0;
   right: 0;
-  // Calculate width based on scroll progress: 25% + (scrollProgress * 50%) = 25% to 75%
-  width: calc(25% + (var(--scroll-progress, 0) * 50%));
+  /* Binary width: collapsed (25%) or expanded (75%) */
+  width: 25%;
   height: 100%;
   background-color: rgba(255, 255, 255, 0.9);
   z-index: 2;
   pointer-events: none;
-  transition: width 0.1s linear;
+  transition: width 180ms ease-out;
   clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%);
 }
 
@@ -30,7 +30,18 @@
   pointer-events: auto;
 }
 
+.portfolio-item-right.expanded {
+  width: 75%;
+}
+
 .game-title {
   color: var(--color-secondary-light);
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.helper {
+  color: gray;
+  opacity: .8;
+  font-size: smaller;
+  margin-top: 16px;
 }

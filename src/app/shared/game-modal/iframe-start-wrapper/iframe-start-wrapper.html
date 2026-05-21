@@ -1,0 +1,22 @@
+<div class="iframe-shell">
+  @if (!iframeSrc()) {
+    <div class="iframe-overlay">
+      <div class="iframe-overlay-card">
+        <button type="button" class="btn btn-primary btn-lg px-4" (click)="start()">
+          {{ buttonLabel() }}
+        </button>
+        @if (description()) {
+          <p class="iframe-overlay-copy mb-0">{{ description() }}</p>
+        }
+      </div>
+    </div>
+  } @else {
+    <iframe
+    class="iframe-element"
+    [src]="iframeSrc()"
+    [title]="title()"
+    allow="autoplay; fullscreen; gamepad"
+    loading="eager"
+  ></iframe>
+  }
+</div>

@@ -27,7 +27,8 @@ export class PortfolioGamesComponent {
   private readonly isItemAtMinima = signal(true);
   private transitionScrollAmount = 0;
   private transitionDirection: 'up' | 'down' | null = null;
-  private readonly transitionMaxScroll = 500; // pixels to scroll for next game
+  // Number of wheel ticks required to advance to the next game when item is expanded
+  private readonly transitionMaxScroll = 4; // treated as ticks now
 
   currentGame: Signal<PortfolioGameDTO> = computed(() => this.portfolioGames()[this.currentGameIndex()]);
   currentGameProgress: Signal<number> = computed(() => {
@@ -173,16 +174,17 @@ export class PortfolioGamesComponent {
       return;
     }
 
-    this.updateTransitionProgress(isScrollingDown ? 'down' : 'up', Math.abs(event.deltaY));
+    // Treat each wheel event as a single tick for discrete transitions.
+    this.updateTransitionProgress(isScrollingDown ? 'down' : 'up', 1);
   }
 
-  private updateTransitionProgress(direction: 'up' | 'down', deltaAmount: number) {
+  private updateTransitionProgress(direction: 'up' | 'down', ticks: number) {
     if (this.transitionDirection && this.transitionDirection !== direction) {
       this.transitionScrollAmount = 0;
     }
 
     this.transitionDirection = direction;
-    this.transitionScrollAmount += deltaAmount;
+    this.transitionScrollAmount += ticks;
     this.transitionScrollAmount = Math.min(this.transitionScrollAmount, this.transitionMaxScroll);
 
     const progress = this.transitionScrollAmount / this.transitionMaxScroll;

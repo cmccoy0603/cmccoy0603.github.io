@@ -1,0 +1,37 @@
+<div class="game-modal-generic">
+  <p class="fs-5 lh-lg mb-4 text-dark">{{ game().description }}</p>
+
+  @if (game().modalContent?.summary) {
+    <p class="lead text-dark mb-4">{{ game().modalContent?.summary }}</p>
+  }
+
+  @if (game().modalContent?.highlights?.length) {
+    <div class="mb-4">
+      <h4 class="h6 text-uppercase text-muted mb-3">Highlights</h4>
+      <ul class="list-group list-group-flush">
+        @for (highlight of game().modalContent?.highlights ?? []; track highlight) {
+          <li class="list-group-item px-0 py-2 bg-transparent text-dark">{{ highlight }}</li>
+        }
+      </ul>
+    </div>
+  }
+
+  @if (game().modalContent?.sections?.length) {
+    <div class="d-grid gap-3">
+      @for (section of game().modalContent?.sections ?? []; track section.heading) {
+        <section>
+          <h4 class="h6 text-uppercase text-muted mb-2">{{ section.heading }}</h4>
+          <p class="mb-0 text-dark">{{ section.body }}</p>
+        </section>
+      }
+    </div>
+  }
+
+  @if (game().modalContent?.links?.length) {
+    <div class="mt-4 d-flex flex-wrap gap-2">
+      @for (link of game().modalContent?.links ?? []; track link.href) {
+        <a class="btn btn-outline-primary btn-sm" [href]="link.href" target="_blank" rel="noreferrer">{{ link.label }}</a>
+      }
+    </div>
+  }
+</div>

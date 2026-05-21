@@ -11,13 +11,15 @@
 }
 
 .game-modal-dialog {
-	width: min(720px, 100%);
+	/* increase max dialog width while keeping it responsive */
+	width: min(1200px, 95%);
 	margin: 0;
 }
 
 .game-modal-content {
-  max-height: min(88vh, 900px);
-  overflow: hidden;
+  /* allow larger modals and enable internal scrolling for body */
+  max-height: min(94vh, 1100px);
+  overflow: visible;
   border-radius: 1.5rem;
   border: 1px solid var(--color-primary);
   background: linear-gradient(180deg, var(--color-white), var(--color-background-light));
@@ -55,6 +57,9 @@
   font-size: 1.05rem;
   line-height: 1.8;
   background: linear-gradient(180deg, var(--color-white), transparent);
+  /* constrain body and let it scroll internally when content is tall */
+  max-height: calc(94vh - 160px);
+  overflow: auto;
 }
 
 .game-modal-footer {

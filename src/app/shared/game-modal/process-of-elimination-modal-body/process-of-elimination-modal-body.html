@@ -1,0 +1,45 @@
+<div class="d-grid gap-4">
+  <div class="d-flex flex-column flex-lg-row gap-4 align-items-start">
+    <div class="flex-grow-1">
+      <p class="lead text-dark mb-3">{{ game().modalContent?.summary }}</p>
+      <p class="text-dark mb-0">{{ game().description }}</p>
+    </div>
+
+    <div class="col-12 col-lg-5">
+      <div class="rounded-4 overflow-hidden shadow-sm border border-1 border-secondary-subtle bg-white">
+        <img
+          class="img-fluid w-100"
+          [src]="game().image"
+          [alt]="game().title"
+        />
+      </div>
+    </div>
+  </div>
+
+  @if (game().modalContent?.highlights?.length) {
+    <div class="rounded-4 bg-dark text-white p-3">
+      <h4 class="h6 text-uppercase text-white-50 mb-3">Run highlights</h4>
+      <ul class="list-unstyled m-0 d-grid gap-2">
+        @for (highlight of game().modalContent?.highlights ?? []; track highlight) {
+          <li class="d-flex gap-2 align-items-start">
+            <span class="badge text-bg-light text-dark rounded-pill mt-1">•</span>
+            <span>{{ highlight }}</span>
+          </li>
+        }
+      </ul>
+    </div>
+  }
+
+  @if (game().modalContent?.sections?.length) {
+    <div class="row g-3">
+      @for (section of game().modalContent?.sections ?? []; track section.heading) {
+        <div class="col-12 col-lg-6">
+          <section class="rounded-4 bg-light border border-1 border-secondary-subtle p-3 h-100">
+            <h4 class="h6 text-uppercase text-muted mb-2">{{ section.heading }}</h4>
+            <p class="mb-0 text-dark">{{ section.body }}</p>
+          </section>
+        </div>
+      }
+    </div>
+  }
+</div>

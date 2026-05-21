@@ -11,11 +11,17 @@
   <div
     class="portfolio-item-right"
     [class.details-interactive]="isFullyExpanded()"
-    [style.--scroll-progress]="scrollProgress() | number:'0.0-3'"
+    [class.expanded]="isFullyExpanded()"
     [attr.aria-disabled]="!isFullyExpanded()"
   >
     <div class="d-flex flex-column align-items-center justify-content-center h-100 p-5">
-      <p class="fs-5 lh-lg m-0 text-dark">{{ currentGame().description }}</p>
+      @if (isFullyExpanded()) {
+        <p class="fs-5 ms-4 lh-lg text-dark">{{ currentGame().description }}</p>
+      } @else {
+        <p class="fs-5 lh-lg m-0 text-dark">{{ currentGame().description }}</p>
+        <p class="fs-5 helper">Scroll to see more details</p>
+      }
+      
       @if (isFullyExpanded()) {
         <button type="button" class="btn btn-primary m-4" (click)="isOpened = true">Explore</button>
       }
@@ -25,8 +31,7 @@
 @if(isOpened) {
   <app-game-modal
     [isOpen]="isOpened"
-    [title]="currentGame().title"
-    [description]="currentGame().description"
+    [game]="currentGame()"
     (closed)="isOpened = false"
   ></app-game-modal>
 }
