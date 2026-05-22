@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { GameModal } from '../../shared/game-modal/game-modal';
 import { PortfolioGameDTO, PortfolioGameSection } from '../../models/portfolio-game.dto';
 import { portfolioGames } from '../../content/games-content';
@@ -29,7 +30,7 @@ const SECTIONS: PortfolioSection[] = [
   templateUrl: './portfolio-games.html',
   styleUrl: './portfolio-games.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, GameModal]
+  imports: [CommonModule, RouterLink, GameModal]
 })
 export class PortfolioGamesComponent {
   protected readonly sections = SECTIONS;

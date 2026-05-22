@@ -1,12 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { IntroComponent } from './modules/intro/intro';
-import { PortfolioGamesComponent } from './modules/portfolio-games/portfolio-games';
-import { SkillsComponent } from './modules/skills/skills';
-import { ContactComponent } from './modules/contact/contact';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [IntroComponent, PortfolioGamesComponent, SkillsComponent, ContactComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

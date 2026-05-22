@@ -1,0 +1,16 @@
+.legacy-portfolio-page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, rgba(236, 253, 245, 0.82) 0%, rgba(255, 255, 255, 1) 100%);
+}
+
+.legacy-portfolio-eyebrow {
+  letter-spacing: 0.14em;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--color-secondary);
+}
+
+.legacy-portfolio-copy {
+  max-width: 52rem;
+  color: var(--color-text-light);
+}

@@ -36,6 +36,10 @@
   position: relative;
 }
 
+.legacy-portfolio-link {
+  min-width: min(100%, 20rem);
+}
+
 .portfolio-card {
   display: block;
   width: 100%;
