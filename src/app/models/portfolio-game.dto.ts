@@ -1,4 +1,5 @@
-export type PortfolioGameModalKey = 'generic' | 'twilight-train' | 'process-of-elimination' | '3dchromo-twist';
+export type PortfolioGameModalKey = 'generic' | 'twilight-train' | 'process-of-elimination' | '3dchromo-twist' | 'game-jam';
+export type PortfolioGameSection = 'school-projects' | 'game-jam';
 
 export interface PortfolioGameModalSection {
   heading: string;
@@ -21,6 +22,8 @@ export interface PortfolioGameDTO {
   id: number;
   title: string;
   description: string;
+  year: number;
+  section: PortfolioGameSection;
   // Path to a background image for this portfolio item (relative to project root, e.g. '/assets/...')
   image?: string;
   modalKey?: PortfolioGameModalKey;

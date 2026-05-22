@@ -1,0 +1,21 @@
+<section id="portfolio-games-legacy" class="w-100 position-relative" style="padding: 0; margin: 0;">
+  @if (portfolioGames()[currentGameIndex()]) {
+    <app-portfolio-item-legacy 
+      [currentGame]="currentGame()"
+      [initialProgress]="currentGameProgress()"
+      (progressChanged)="onItemProgressChanged($event)"
+    ></app-portfolio-item-legacy>
+  }
+  
+  @if (transitionProgress() > 0) {
+    <div class="transition-progress-bar" [style.width.%]="transitionProgress() * 100"></div>
+  }
+
+  <i class="bi bi-arrow-up-circle pg-arrow pg-arrow-up"
+    (click)="scrollToPreviousSection()"
+    role="button" tabindex="0" aria-label="Scroll to previous section"></i>
+
+  <i class="bi bi-arrow-down-circle pg-arrow pg-arrow-down"
+    (click)="scrollToNextSection()"
+    role="button" tabindex="0" aria-label="Scroll to next section"></i>
+</section>

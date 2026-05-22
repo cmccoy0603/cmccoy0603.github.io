@@ -5,6 +5,8 @@ export const portfolioGames: PortfolioGameDTO[] = [
         id: 1, 
         title: 'All Aboard the Twilight Train',
         description: 'Narrative focused game where you try to find why you\'re on the train.',
+        year: 2025,
+        section: 'school-projects',
         image: '/assets/Games/TwilightTrain/Twilight-Train-Main.png',
         modalKey: 'twilight-train',
         modalContent: {
@@ -30,6 +32,8 @@ export const portfolioGames: PortfolioGameDTO[] = [
         id: 2, 
         title: '3DChromo Twist',
         description: 'Look into the microscope to rearrange bins in different microscopic structures to get the correct structure',
+        year: 2026,
+        section: 'school-projects',
         image:'/assets/Games/3DChromoTwist/3DChromoTwist-Main.png',
         modalKey: '3dchromo-twist',
         iframeUrl: '/assets/Games/3DChromoTwist/3DChromoTwist/index.html'
@@ -38,6 +42,8 @@ export const portfolioGames: PortfolioGameDTO[] = [
         id: 3, 
         title: 'Marching Huts',
         description: 'Compete against other players in a fast paced RTS where you build and command an army to destroy the other players huts',
+        year: 2026,
+        section: 'school-projects',
         image: '/assets/Games/MarchingHuts/MarchingHuts-Main.png',
         modalKey: 'generic'
     },
@@ -45,6 +51,8 @@ export const portfolioGames: PortfolioGameDTO[] = [
         id: 4,
         title: 'GOAP Village Simulater',
         description: 'Watch different villagers go about their day as they make decisions based on their needs and desires in this village simulator',
+        year: 2026,
+        section: 'school-projects',
         image: '/assets/Games/GOAPVillageSimulator/GOAPVillageSimulator-Main.png',
         modalKey: 'generic'
     },
@@ -52,6 +60,8 @@ export const portfolioGames: PortfolioGameDTO[] = [
         id: 5,
         title: 'Process of Elimination',
         description: '2D Roguelike with a procedurally generated lab to explore and escape while battling vermin and buying upgrades',
+        year: 2024,
+        section: 'school-projects',
         image: '/assets/Games/ProcessOfElimination/ProcessOfElimination-Main.png',
         modalKey: 'process-of-elimination',
         modalContent: {
@@ -75,9 +85,41 @@ export const portfolioGames: PortfolioGameDTO[] = [
     },
     {
         id: 6,
-        title: 'Game jam games',
-        description: 'All of the games I\'ve made for game jams. Most are small but can be played right here on the website.',
-        image: '/assets/Games/GameJamGames/GameJamGames-Main.png',
+        title: 'Monster Masked',
+        description: 'Made for the Global Game Jam 2026 - Only let the correct monsters into the party',
+        year: 2026,
+        section: 'game-jam',
+        image: '/assets/Games/GameJamGames/MonsterMasked/MonsterMasked-Main.png',
+        iframeUrl: '/assets/Games/GameJamGames/MonsterMasked/MonsterMasked/index.html',
+        modalKey: 'game-jam'
+    },
+    {
+        id: 7,
+        title: 'Barbarian Beats',
+        description: 'Made for the Final Croak Jam 2026 - Slash monsters to the beat of a song, getting upgrades and throwing weapons',
+        year: 2026,
+        section: 'game-jam',
+        image: '/assets/Games/GameJamGames/BarbarianBeats/BarbarianBeats-Main.png',
         modalKey: 'generic'
-    }
+    },
+    {
+        id: 8,
+        title: 'The Graveyard Drift',
+        description: 'Made for the GMTK Game Jam 2025 - Close in ghosts with loops to capture them and use their ectoplasm to fuel your motorcycle',
+        year: 2025,
+        section: 'game-jam',
+        image: '/assets/Games/GameJamGames/GraveyardDrift/GraveyardDrift-Main.png',
+        iframeUrl: '/assets/Games/GameJamGames/GraveyardDrift/TheGraveyardDrift/index.html',
+        modalKey: 'game-jam'
+    },
+    {
+        id: 9,
+        title: 'Demon Punter',
+        description: 'Made for the Global Game Jam 2025 - Save your fairy village by knocking invading demons into spikes using your bubble wand',
+        year: 2025,
+        section: 'game-jam',
+        image: '/assets/Games/GameJamGames/DemonPunter/DemonPunter-Main.png',
+        iframeUrl: '/assets/Games/GameJamGames/DemonPunter/DemonPunterWeb/index.html',
+        modalKey: 'game-jam'
+    },
 ];

@@ -1,6 +1,6 @@
 @if (isOpen()) {
-  <div class="game-modal-backdrop" (click)="close()" (wheel)="onWheel($event)">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable game-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="game-modal-title" (click)="$event.stopPropagation()" (wheel)="onWheel($event)">
+  <div class="game-modal-backdrop" (click)="close()" (wheel)="blockPageScroll($event)" (touchmove)="blockPageScroll($event)">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable game-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="game-modal-title" (click)="$event.stopPropagation()" (wheel)="blockPageScroll($event)" (touchmove)="blockPageScroll($event)">
       <div class="modal-content game-modal-content">
         <div class="modal-header game-modal-header">
           <div>
@@ -10,7 +10,7 @@
           <button type="button" class="btn-close" aria-label="Close modal" (click)="close()"></button>
         </div>
 
-        <div class="modal-body game-modal-body" (wheel)="onWheel($event)">
+        <div class="modal-body game-modal-body" (wheel)="stopEvent($event)" (touchmove)="stopEvent($event)">
           @switch (game().modalKey ?? 'generic') {
             @case ('twilight-train') {
               <app-twilight-train-modal-body [game]="game()"></app-twilight-train-modal-body>
@@ -20,6 +20,9 @@
             }
             @case ('3dchromo-twist') {
               <app-threed-chromo-twist-modal-body [game]="game()"></app-threed-chromo-twist-modal-body>
+            }
+            @case ('game-jam') {
+              <app-game-jam-modal-body [game]="game()"></app-game-jam-modal-body>
             }
             @default {
               <app-generic-game-modal-body [game]="game()"></app-generic-game-modal-body>

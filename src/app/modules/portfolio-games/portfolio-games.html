@@ -1,23 +1,51 @@
-<section id="portfolio-games" class="w-100 position-relative" style="padding: 0; margin: 0;">
-  @if (portfolioGames()[currentGameIndex()]) {
-    <app-portfolio-item 
-      [currentGame]="currentGame()"
-      [initialProgress]="currentGameProgress()"
-      (progressChanged)="onItemProgressChanged($event)"
-    >
-    </app-portfolio-item>
-  }
-  
-  <!-- Progress bar for game transition -->
-  @if (transitionProgress() > 0) {
-    <div class="transition-progress-bar" [style.width.%]="transitionProgress() * 100"></div>
-  }
+<section id="portfolio-games" class="portfolio-games-section py-5">
+  <div class="container position-relative">
+    <div class="portfolio-games-intro text-center mx-auto mb-5">
+      <p class="portfolio-games-eyebrow text-uppercase mb-2">Portfolio</p>
+      <h2 class="display-5 fw-bold mb-3">All* of the games I've worked on</h2>
+      <p class="lead mb-0">
+        Click any game to learn more about it and play some right here
+      </p>
+    </div>
 
-  <i class="bi bi-arrow-up-circle pg-arrow pg-arrow-up"
-    (click)="scrollToPreviousSection()"
-    role="button" tabindex="0" aria-label="Scroll to previous section"></i>
+    @for (section of sections; track section.id) {
+      <div class="portfolio-game-group mb-5">
+        <div class="d-flex flex-column flex-md-row align-items-md-end justify-content-between gap-3 mb-4">
+          <div>
+            <p class="portfolio-games-section-label mb-2 text-uppercase">{{ section.title }}</p>
+            <h3 class="h2 fw-bold mb-2">{{ section.title }}</h3>
+            <p class="portfolio-games-section-copy mb-0">{{ section.description }}</p>
+          </div>
+        </div>
 
-  <i class="bi bi-arrow-down-circle pg-arrow pg-arrow-down"
-    (click)="scrollToNextSection()"
-    role="button" tabindex="0" aria-label="Scroll to next section"></i>
+        <div class="row g-4">
+          @for (game of gamesForSection(section.id); track trackByGameId($index, game)) {
+            <div class="col-12 col-md-6 col-xl-4">
+              <button type="button" class="portfolio-card btn p-0 text-start w-100" (click)="openGame(game)">
+                <span class="portfolio-card-image" [style.backgroundImage]="'linear-gradient(180deg, rgba(11, 16, 32, 0.1), rgba(11, 16, 32, 0.78)), url(' + (game.image ?? '') + ')'">
+                  <span class="portfolio-card-year">{{ game.year }}</span>
+                  @if (game.iframeUrl) {
+                    <span class="portfolio-card-badge">Browser</span>
+                  }
+                  <span class="portfolio-card-content">
+                    <span class="portfolio-card-kicker">Click to open</span>
+                    <span class="portfolio-card-title">{{ game.title }}</span>
+                    <span class="portfolio-card-description">{{ game.description }}</span>
+                  </span>
+                </span>
+              </button>
+            </div>
+          }
+        </div>
+      </div>
+    }
+  </div>
+
+  @if (hasSelection() && selectedGame()) {
+    <app-game-modal
+      [isOpen]="hasSelection()"
+      [game]="selectedGame()!"
+      (closed)="closeGame()"
+    ></app-game-modal>
+  }
 </section>

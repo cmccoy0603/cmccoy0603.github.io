@@ -1,0 +1,46 @@
+.portfolio-item {
+  overflow: hidden;
+}
+
+.portfolio-item-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1538481143235-5d440e180304?w=800&q=80') center/cover;
+  z-index: 0;
+}
+
+.portfolio-item-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 25%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  z-index: 2;
+  pointer-events: none;
+  transition: width 180ms ease-out;
+  clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.portfolio-item-right.details-interactive {
+  pointer-events: auto;
+}
+
+.portfolio-item-right.expanded {
+  width: 75%;
+}
+
+.game-title {
+  color: var(--color-secondary-light);
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.helper {
+  color: gray;
+  opacity: .8;
+  font-size: smaller;
+  margin-top: 16px;
+}

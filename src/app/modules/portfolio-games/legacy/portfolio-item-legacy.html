@@ -1,0 +1,34 @@
+<div class="portfolio-item w-100 position-relative" style="height: 100vh;">
+  <div class="portfolio-item-background" [style.background]="background()"></div>
+  
+  <div class="position-absolute top-1 start-0 p-5 z-3">
+    <h2 class="display-2 fw-bold m-0 game-title">{{ currentGame().title }}</h2>
+  </div>
+  
+  <div
+    class="portfolio-item-right"
+    [class.details-interactive]="isFullyExpanded()"
+    [class.expanded]="isFullyExpanded()"
+    [attr.aria-disabled]="!isFullyExpanded()"
+  >
+    <div class="d-flex flex-column align-items-center justify-content-center h-100 p-5">
+      @if (isFullyExpanded()) {
+        <p class="fs-5 ms-4 lh-lg text-dark">{{ currentGame().description }}</p>
+      } @else {
+        <p class="fs-5 lh-lg m-0 text-dark">{{ currentGame().description }}</p>
+        <p class="fs-5 helper">Scroll to see more details</p>
+      }
+      
+      @if (isFullyExpanded()) {
+        <button type="button" class="btn btn-primary m-4" (click)="isOpened = true">Explore</button>
+      }
+    </div>
+  </div>
+</div>
+@if(isOpened) {
+  <app-game-modal
+    [isOpen]="isOpened"
+    [game]="currentGame()"
+    (closed)="isOpened = false"
+  ></app-game-modal>
+}
