@@ -21,19 +21,7 @@
         <div class="row g-4">
           @for (game of gamesForSection(section.id); track trackByGameId($index, game)) {
             <div class="col-12 col-md-6 col-xl-4">
-              <button type="button" class="portfolio-card btn p-0 text-start w-100" (click)="openGame(game)">
-                <span class="portfolio-card-image" [style.backgroundImage]="'linear-gradient(180deg, rgba(11, 16, 32, 0.1), rgba(11, 16, 32, 0.78)), url(' + (game.image ?? '') + ')'">
-                  <span class="portfolio-card-year">{{ game.year }}</span>
-                  @if (game.iframeUrl) {
-                    <span class="portfolio-card-badge">Browser</span>
-                  }
-                  <span class="portfolio-card-content">
-                    <span class="portfolio-card-kicker">Click to open</span>
-                    <span class="portfolio-card-title">{{ game.title }}</span>
-                    <span class="portfolio-card-description">{{ game.description }}</span>
-                  </span>
-                </span>
-              </button>
+              <app-portfolio-item [game]="game" (selected)="openGame($event)"></app-portfolio-item>
             </div>
           }
         </div>

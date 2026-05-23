@@ -1,9 +1,22 @@
 <button type="button" class="portfolio-card btn p-0 text-start w-100" (click)="onSelect()">
   <span class="portfolio-card-image" [style.backgroundImage]="backgroundImage()">
+    <span class="portfolio-card-year">{{ game().year }}</span>
+    @if (game().iframeUrl) {
+      <span class="portfolio-card-badge">Browser</span>
+    }
     <span class="portfolio-card-content">
-      <span class="portfolio-card-kicker">Click to open</span>
       <span class="portfolio-card-title">{{ game().title }}</span>
+      @if (game().context) {
+        <span class="portfolio-card-context">{{ game().context }}</span>
+      }
       <span class="portfolio-card-description">{{ game().description }}</span>
+      @if (game().skills.length) {
+        <span class="portfolio-card-skills">
+          @for (skill of game().skills; track skill) {
+            <span class="badge rounded-pill portfolio-card-skill">{{ skill }}</span>
+          }
+        </span>
+      }
     </span>
   </span>
 </button>

@@ -4,6 +4,7 @@ import { RouterLink } from '@angular/router';
 import { GameModal } from '../../shared/game-modal/game-modal';
 import { PortfolioGameDTO, PortfolioGameSection } from '../../models/portfolio-game.dto';
 import { portfolioGames } from '../../content/games-content';
+import { PortfolioItem } from './portfolio-item/portfolio-item';
 
 type PortfolioSection = {
   id: PortfolioGameSection;
@@ -30,7 +31,7 @@ const SECTIONS: PortfolioSection[] = [
   templateUrl: './portfolio-games.html',
   styleUrl: './portfolio-games.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, RouterLink, GameModal]
+  imports: [CommonModule, RouterLink, GameModal, PortfolioItem]
 })
 export class PortfolioGamesComponent {
   protected readonly sections = SECTIONS;

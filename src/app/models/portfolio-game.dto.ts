@@ -22,6 +22,8 @@ export interface PortfolioGameDTO {
   id: number;
   title: string;
   description: string;
+  context?: string;
+  skills: string[];
   year: number;
   section: PortfolioGameSection;
   // Path to a background image for this portfolio item (relative to project root, e.g. '/assets/...')

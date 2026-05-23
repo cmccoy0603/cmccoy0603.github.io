@@ -8,12 +8,14 @@
   padding: 1.5rem;
   background: rgba(8, 12, 18, 0.72);
   backdrop-filter: blur(10px);
+  overscroll-behavior: none;
 }
 
 .game-modal-dialog {
 	/* increase max dialog width while keeping it responsive */
 	width: 75%;
 	margin: 0;
+  overscroll-behavior: none;
 }
 
 .game-modal-content {
@@ -24,6 +26,7 @@
   border: 1px solid var(--color-primary);
   background: linear-gradient(180deg, var(--color-white), var(--color-background-light));
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+  overscroll-behavior: none;
   --bs-modal-header-border-color: var(--color-primary-light);
   --bs-modal-footer-border-color: var(--color-primary-light);
 }
@@ -60,6 +63,8 @@
   /* constrain body and let it scroll internally when content is tall */
   max-height: calc(94vh - 160px);
   overflow: auto;
+  overflow-x: hidden;
+  overscroll-behavior: none;
 }
 
 .game-modal-footer {

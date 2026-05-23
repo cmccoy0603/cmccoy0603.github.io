@@ -1,4 +1,4 @@
-import { Component, input, output } from '@angular/core';
+import { Component, effect, input, output } from '@angular/core';
 import { PortfolioGameDTO } from '../../models/portfolio-game.dto';
 import { GenericGameModalBody } from './generic-game-modal-body/generic-game-modal-body';
 import { ProcessOfEliminationModalBody } from './process-of-elimination-modal-body/process-of-elimination-modal-body';
@@ -17,6 +17,24 @@ export class GameModal {
   isOpen = input(false);
   game = input.required<PortfolioGameDTO>();
   closed = output<void>();
+
+  private readonly pageScrollLock = effect((onCleanup) => {
+    if (!this.isOpen()) {
+      return;
+    }
+
+    const { body, documentElement } = document;
+    const previousBodyOverflow = body.style.overflow;
+    const previousHtmlOverflow = documentElement.style.overflow;
+
+    body.style.overflow = 'hidden';
+    documentElement.style.overflow = 'hidden';
+
+    onCleanup(() => {
+      body.style.overflow = previousBodyOverflow;
+      documentElement.style.overflow = previousHtmlOverflow;
+    });
+  });
 
   blockPageScroll(event: Event) {
     event.preventDefault();

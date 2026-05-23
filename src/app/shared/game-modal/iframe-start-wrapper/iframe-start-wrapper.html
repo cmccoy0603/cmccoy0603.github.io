@@ -1,5 +1,14 @@
-<div class="iframe-shell">
-  @if (!iframeSrc()) {
+<div class="iframe-shell" #shell>
+  @if (isMobile()) {
+    <div class="iframe-overlay">
+      <div class="iframe-overlay-card iframe-mobile-card">
+        <p class="iframe-mobile-title mb-2">Playable build disabled on mobile</p>
+        <p class="iframe-overlay-copy mb-0">
+          Open this game on a larger screen to play the embedded version.
+        </p>
+      </div>
+    </div>
+  } @else if (!iframeSrc()) {
     <div class="iframe-overlay">
       <div class="iframe-overlay-card">
         <button type="button" class="btn btn-primary btn-lg px-4" (click)="start()">
@@ -11,12 +20,29 @@
       </div>
     </div>
   } @else {
+    <button
+      type="button"
+      class="iframe-fullscreen-button"
+      [attr.aria-pressed]="isFullscreen()"
+      [attr.aria-label]="fullscreenButtonLabel()"
+      [attr.title]="fullscreenButtonLabel()"
+      (click)="toggleFullscreen()"
+    >
+      <i
+        class="bi"
+        [class.bi-arrows-angle-expand]="!isFullscreen()"
+        [class.bi-arrows-angle-contract]="isFullscreen()"
+        aria-hidden="true"
+      ></i>
+      <span class="visually-hidden">{{ fullscreenButtonLabel() }}</span>
+    </button>
+
     <iframe
-    class="iframe-element w-100 h-100"
-    [src]="iframeSrc()"
-    [title]="title()"
-    allow="autoplay; fullscreen; gamepad"
-    loading="eager"
-  ></iframe>
+      class="iframe-element w-100 h-100"
+      [src]="iframeSrc()"
+      [title]="title()"
+      allow="autoplay; fullscreen; gamepad"
+      loading="eager"
+    ></iframe>
   }
 </div>
