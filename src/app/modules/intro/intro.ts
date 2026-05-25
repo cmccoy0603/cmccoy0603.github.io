@@ -9,9 +9,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 })
 export class IntroComponent {
   scrollToSection(id: string) {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
   }
 }
