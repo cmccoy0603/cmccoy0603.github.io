@@ -28,6 +28,7 @@ export interface PortfolioGameDTO {
   section: PortfolioGameSection;
   // Path to a background image for this portfolio item (relative to project root, e.g. '/assets/...')
   image?: string;
+  screenshots?: string[];
   modalKey?: PortfolioGameModalKey;
   modalContent?: PortfolioGameModalContent;
   iframeUrl?: string;

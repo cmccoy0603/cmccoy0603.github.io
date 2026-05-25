@@ -1,22 +1,39 @@
-<button type="button" class="portfolio-card btn p-0 text-start w-100" (click)="onSelect()">
-  <span class="portfolio-card-image" [style.backgroundImage]="backgroundImage()">
-    <span class="portfolio-card-year">{{ game().year }}</span>
-    @if (game().iframeUrl) {
-      <span class="portfolio-card-badge">Browser</span>
-    }
-    <span class="portfolio-card-content">
+<button
+  type="button"
+  class="portfolio-card btn p-0 text-start w-100 h-100 d-flex"
+  (click)="onSelect()"
+  (mouseenter)="onHoverStart()"
+  (mouseleave)="onHoverEnd()"
+  (focusin)="onHoverStart()"
+  (focusout)="onHoverEnd()"
+>
+  <div class="d-flex flex-column w-100 h-100">
+    <span class="portfolio-card-image">
+      <span class="portfolio-card-image-carousel">
+        <span class="portfolio-card-image-track" [style]="carouselTrackStyle()">
+          @for (image of previewImages(); track image) {
+            <span class="portfolio-card-image-slide" [style.backgroundImage]="getSlideBackgroundImage(image)"></span>
+          }
+        </span>
+      </span>
+      <span class="portfolio-card-year">{{ game().year }}</span>
+      @if (game().iframeUrl) {
+        <span class="portfolio-card-badge">Browser</span>
+      }
+    </span>
+    <span class="portfolio-card-content px-2 py-2">
       <span class="portfolio-card-title">{{ game().title }}</span>
       @if (game().context) {
         <span class="portfolio-card-context">{{ game().context }}</span>
       }
       <span class="portfolio-card-description">{{ game().description }}</span>
       @if (game().skills.length) {
-        <span class="portfolio-card-skills">
+        <span class="portfolio-card-skills px-0">
           @for (skill of game().skills; track skill) {
             <span class="badge rounded-pill portfolio-card-skill">{{ skill }}</span>
           }
         </span>
       }
     </span>
-  </span>
+  </div>
 </button>

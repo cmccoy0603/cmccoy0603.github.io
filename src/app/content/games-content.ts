@@ -44,6 +44,10 @@ export const portfolioGames: PortfolioGameDTO[] = [
         year: 2026,
         section: 'school-projects',
         image:'/assets/Games/3DChromoTwist/3DChromoTwist-Main.png',
+        screenshots: [
+            '/assets/Games/3DChromoTwist/3DChromoTwist-Main.png',
+            '/assets/Games/3DChromoTwist/3DChromoTwist/index.png',
+        ],
         modalKey: '3dchromo-twist',
         iframeUrl: '/assets/Games/3DChromoTwist/3DChromoTwist/index.html'
     },
@@ -118,6 +122,10 @@ export const portfolioGames: PortfolioGameDTO[] = [
         year: 2026,
         section: 'game-jam',
         image: '/assets/Games/GameJamGames/MonsterMasked/MonsterMasked-Main.png',
+        screenshots: [
+            '/assets/Games/GameJamGames/MonsterMasked/MonsterMasked-Main.png',
+            '/assets/Games/GameJamGames/MonsterMasked/MonsterMasked/index.png',
+        ],
         iframeUrl: '/assets/Games/GameJamGames/MonsterMasked/MonsterMasked/index.html',
         modalKey: 'game-jam'
     },
@@ -147,6 +155,10 @@ export const portfolioGames: PortfolioGameDTO[] = [
         year: 2025,
         section: 'game-jam',
         image: '/assets/Games/GameJamGames/GraveyardDrift/GraveyardDrift-Main.png',
+        screenshots: [
+            '/assets/Games/GameJamGames/GraveyardDrift/GraveyardDrift-Main.png',
+            '/assets/Games/GameJamGames/GraveyardDrift/TheGraveyardDrift/index.png',
+        ],
         iframeUrl: '/assets/Games/GameJamGames/GraveyardDrift/TheGraveyardDrift/index.html',
         modalKey: 'game-jam'
     },
@@ -163,6 +175,10 @@ export const portfolioGames: PortfolioGameDTO[] = [
         year: 2025,
         section: 'game-jam',
         image: '/assets/Games/GameJamGames/DemonPunter/DemonPunter-Main.png',
+        screenshots: [
+            '/assets/Games/GameJamGames/DemonPunter/DemonPunter-Main.png',
+            '/assets/Games/GameJamGames/DemonPunter/DemonPunterWeb/index.png',
+        ],
         iframeUrl: '/assets/Games/GameJamGames/DemonPunter/DemonPunterWeb/index.html',
         modalKey: 'game-jam'
     },
