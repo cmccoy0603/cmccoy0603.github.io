@@ -1,15 +1,38 @@
 <section class="min-vh-100 intro-section d-flex flex-column justify-content-center">
-    <h1>Camden McCoy</h1>
-    <h2>My game programming portfolio</h2>
-    <div class="d-flex flex-row gap-2 align-items-center justify-content-center pt-2">
-        <button class="btn btn-primary" (click)="scrollToSection('portfolio-games')">
-            My games
-        </button>
-        <button class="btn btn-primary" (click)="scrollToSection('about-me')">
-            About me
-        </button>
-        <button class="btn btn-primary" (click)="scrollToSection('contact')">
-            Contact me
-        </button>
+    <video
+        #introVideo
+        class="intro-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        aria-hidden="true"
+        tabindex="-1"
+        (playing)="onVideoPlaying()"
+        (error)="onVideoError()"
+    >
+        <source src="assets/DemoReelV1.webm" type="video/webm" />
+    </video>
+    <div class="intro-content d-flex flex-column align-items-center justify-content-center">
+        <h1>Camden McCoy</h1>
+        <h2>My game programming portfolio</h2>
+        @if (playbackFailed()) {
+        <div class="intro-status alert alert-light mt-3 mb-0 d-inline-flex align-items-center gap-2" role="status">
+            <span>Demo reel did not start automatically.</span>
+            <button class="btn btn-sm btn-primary" type="button" (click)="startVideo()">Play reel</button>
+        </div>
+        }
+        <div class="d-flex flex-row gap-2 align-items-center justify-content-center pt-2 flex-wrap">
+            <button class="btn btn-primary" (click)="scrollToSection('portfolio-games')">
+                My games
+            </button>
+            <button class="btn btn-primary" (click)="scrollToSection('about-me')">
+                About me
+            </button>
+            <button class="btn btn-primary" (click)="scrollToSection('contact')">
+                Contact me
+            </button>
+        </div>
     </div>
 </section>

@@ -1,15 +1,62 @@
 .intro-section {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
     background: var(--gradient-low-key);
     padding: 60px 20px;
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(24, 16, 44, 0.2) 0%, rgba(24, 16, 44, 0.45) 55%, rgba(24, 16, 44, 0.7) 100%);
+        z-index: 1;
+        pointer-events: none;
+    }
+}
+
+.intro-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+    pointer-events: none;
+    filter: blur(0.1rem);
+}
+
+.intro-content {
+    position: relative;
+    z-index: 2;
+}
+
+.intro-status {
+    max-width: 100%;
+    text-align: center;
 }
 
 h1 {
-    font-size: 3rem;
+    font-size: 4rem;
     text-align: center;
+    color: white;
 }
 
 h2 {
     font-size: 1.5rem;
     font-weight: 300;
     text-align: center;
+    color: white;
+}
+
+/* Hide video & playback UI on small (mobile) screens; show gradient only */
+@media (max-width: 767.98px) {
+    .intro-video {
+        display: none !important;
+    }
+
+    .intro-status {
+        display: none !important;
+    }
 }
