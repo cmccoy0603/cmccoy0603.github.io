@@ -4,17 +4,19 @@ export const portfolioGames: PortfolioGameDTO[] = [
     { 
         id: 1, 
         title: 'All Aboard the Twilight Train',
-        description: 'Narrative focused game where you try to find why you\'re on the train.',
+        description: 'Main gameplay programmer for school capstone project.'
+        + '\n\nImplemented branching dialogue system and other gameplay systems.',
         skills: [
             'Unreal Engine',
             'Dialogue systems',
+            'C++'
         ],
         year: 2025,
         section: 'school-projects',
         image: '/assets/Games/TwilightTrain/Twilight-Train-Main.png',
         modalKey: 'twilight-train',
         modalContent: {
-            summary: 'A story-first mystery set on a train where every conversation pushes you closer to the truth.',
+            summary: '',
             highlights: [
                 'Dialogue-driven progression',
                 'Mood-focused exploration',
@@ -30,12 +32,18 @@ export const portfolioGames: PortfolioGameDTO[] = [
                     body: 'Use this pattern when a game needs more than a short summary and a few metadata fields.',
                 },
             ],
-        }
+        },
+        screenshots: [
+            '/assets/Games/TwilightTrain/Twilight-Train-Main.png',
+            '/assets/Games/TwilightTrain/Twilight-Train-Screenshot-1.jpg',
+
+        ]
     },
     { 
         id: 2, 
         title: '3DChromo Twist',
-        description: 'Look into the microscope to rearrange bins in different microscopic structures to get the correct structure',
+        description: 'Ported and expanded java prototype to be web playable as part of a research assistant role.'
+            + '\n\nUses webserver to store leaderboard data and store and retrieve structure data',
         skills: [
             'Godot',
             'Web Server',
@@ -46,7 +54,10 @@ export const portfolioGames: PortfolioGameDTO[] = [
         image:'/assets/Games/3DChromoTwist/3DChromoTwist-Main.png',
         screenshots: [
             '/assets/Games/3DChromoTwist/3DChromoTwist-Main.png',
-            '/assets/Games/3DChromoTwist/3DChromoTwist/index.png',
+            '/assets/Games/3DChromoTwist/3DChromoTwist-Screenshot-1.png',
+            '/assets/Games/3DChromoTwist/3DChromoTwist-Screenshot-2.png',
+            '/assets/Games/3DChromoTwist/3DChromoTwist-Screenshot-3.png',
+            '/assets/Games/3DChromoTwist/3DChromoTwist-Screenshot-4.png',
         ],
         modalKey: '3dchromo-twist',
         iframeUrl: '/assets/Games/3DChromoTwist/3DChromoTwist/index.html'
@@ -54,11 +65,13 @@ export const portfolioGames: PortfolioGameDTO[] = [
     { 
         id: 3, 
         title: 'Marching Huts',
-        description: 'Compete against other players in a fast paced RTS where you build and command an army to destroy the other players huts',
+        description: 'Created networked rts game using Unreal\'s replication system.'
+            +'\n\nUsed state trees for unit AI.',
         skills: [
             'Unreal Engine',
             'Networking',
             'AI',
+            'C++'
         ],
         year: 2026,
         section: 'school-projects',
@@ -68,10 +81,12 @@ export const portfolioGames: PortfolioGameDTO[] = [
     {
         id: 4,
         title: 'GOAP Village Simulater',
-        description: 'Watch different villagers go about their day as they make decisions based on their needs and desires in this village simulator',
+        description: 'Created prototype utilizing goal oriented action planning (GOAP) to simulate a village.'
+            +'\n\nVillagers can preform different actions based on their job to fulfil their basic survival goals',
         skills: [
             'Unity',
             'GOAP AI',
+            'C#',
         ],
         year: 2026,
         section: 'school-projects',
@@ -81,11 +96,13 @@ export const portfolioGames: PortfolioGameDTO[] = [
     {
         id: 5,
         title: 'Process of Elimination',
-        description: '2D Roguelike with a procedurally generated lab to explore and escape while battling vermin and buying upgrades',
+        description: 'Created roguelike game using C++ and UNT\'s Larc engine (helper engine wrapped around DirectX)'
+            + '\n\nDeveloped procedural dungeon generation and object oriented enemy AI creator',
         skills: [
             'DirectX',
             'Procedural generation',
             'OOP design',
+            'C++'
         ],
         year: 2024,
         section: 'school-projects',
@@ -121,9 +138,9 @@ export const portfolioGames: PortfolioGameDTO[] = [
         ],
         year: 2026,
         section: 'game-jam',
-        image: '/assets/Games/GameJamGames/MonsterMasked/MonsterMasked-Main.png',
+        image: '/assets/Games/GameJamGames/MonsterMasked/Monster-Masked-Main.png',
         screenshots: [
-            '/assets/Games/GameJamGames/MonsterMasked/MonsterMasked-Main.png',
+            '/assets/Games/GameJamGames/MonsterMasked/Monster-Masked-Main.png',
             '/assets/Games/GameJamGames/MonsterMasked/MonsterMasked/index.png',
         ],
         iframeUrl: '/assets/Games/GameJamGames/MonsterMasked/MonsterMasked/index.html',
@@ -137,10 +154,11 @@ export const portfolioGames: PortfolioGameDTO[] = [
         skills: [
             'Unity',
             'Scriptable objects',
+            'C#'
         ],
         year: 2026,
         section: 'game-jam',
-        image: '/assets/Games/GameJamGames/BarbarianBeats/BarbarianBeats-Main.png',
+        image: '/assets/Games/GameJamGames/BarbarianBeats/Barbarian-Beats-Main.png',
         modalKey: 'generic'
     },
     {

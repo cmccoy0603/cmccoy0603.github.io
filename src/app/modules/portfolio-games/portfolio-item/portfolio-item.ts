@@ -53,7 +53,7 @@ export class PortfolioItem {
     this.previewTimerId = window.setInterval(() => {
       const previewImages = this.previewImages();
       this.activePreviewIndex.update((currentIndex) => (currentIndex + 1) % previewImages.length);
-    }, 900);
+    }, 1200);
   }
 
   protected onHoverEnd() {

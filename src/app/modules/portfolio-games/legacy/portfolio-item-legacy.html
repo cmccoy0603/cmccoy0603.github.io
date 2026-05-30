@@ -13,9 +13,9 @@
   >
     <div class="d-flex flex-column align-items-center justify-content-center h-100 p-5">
       @if (isFullyExpanded()) {
-        <p class="fs-5 ms-4 lh-lg text-dark">{{ currentGame().description }}</p>
+        <p class="fs-5 ms-4 lh-lg text-dark portfolio-item-description">{{ currentGame().description }}</p>
       } @else {
-        <p class="fs-5 lh-lg m-0 text-dark">{{ currentGame().description }}</p>
+        <p class="fs-5 lh-lg m-0 text-dark portfolio-item-description">{{ currentGame().description }}</p>
         <p class="fs-5 helper">Scroll to see more details</p>
       }
       
